@@ -1,0 +1,64 @@
+name: MLflow CI - Re-Training Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'MLProject/**'
+  workflow_dispatch:   # bisa trigger manual dari GitHub Actions tab
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout repo ──
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # ── 2. Setup Python ──
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.7"
+
+      # ── 3. Install dependencies ──
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mlflow==2.19.0 pandas==2.2.2 numpy==1.26.4 scikit-learn==1.5.1 matplotlib==3.9.2
+
+      # ── 4. Jalankan MLflow Project ──
+      - name: Run MLflow Project
+        run: |
+          cd Workflow-CI
+          mlflow run MLProject \
+            --env-manager=local \
+            -P n_estimators=200 \
+            -P max_depth=10 \
+            -P min_samples_split=2 \
+            -P min_samples_leaf=1
+
+      # ── 5. Simpan artefak MLflow ke GitHub (upload ke repo) ──
+      - name: Upload MLflow Artifacts to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlflow-artifacts-${{ github.run_number }}
+          path: |
+            Workflow-CI/mlruns/
+            Workflow-CI/MLProject/confusion_matrix.png
+            Workflow-CI/MLProject/feature_importance.png
+            Workflow-CI/MLProject/classification_report.txt
+          retention-days: 30
+
+      # ── 6. Commit mlruns ke repo agar tersimpan permanen ──
+      - name: Commit MLflow runs to repository
+        run: |
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Workflow-CI/mlruns/ || true
+          git diff --cached --quiet || git commit -m "ci: update mlruns artifacts [run #${{ github.run_number }}]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
