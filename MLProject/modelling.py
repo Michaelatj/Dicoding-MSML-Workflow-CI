@@ -31,8 +31,9 @@ from sklearn.metrics import (
 # ──────────────────────────────────────────────
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_path",        type=str,   default="social_media_mental_health_preprocessing/train.csv")
-    parser.add_argument("--test_path",         type=str,   default="social_media_mental_health_preprocessing/test.csv")
+    # FIX: Updated default paths to match your root-level folder structure
+    parser.add_argument("--train_path",        type=str,   default="preprocessing/social_media_mental_health_preprocessing/train.csv")
+    parser.add_argument("--test_path",         type=str,   default="preprocessing/social_media_mental_health_preprocessing/test.csv")
     parser.add_argument("--n_estimators",      type=int,   default=100)
     parser.add_argument("--max_depth",         type=str,   default="None")
     parser.add_argument("--min_samples_split", type=int,   default=2)
@@ -45,6 +46,17 @@ def parse_args():
 TARGET_COL = "PHQ_9_Severity"
 
 def load_data(train_path, test_path):
+    # FALLBACK CHECK: If run from inside a nested subdirectory, try looking up a level
+    if not os.path.exists(train_path) and os.path.exists(os.path.join("..", "..", train_path)):
+        train_path = os.path.join("..", "..", train_path)
+        test_path = os.path.join("..", "..", test_path)
+
+    if not os.path.exists(train_path):
+        raise FileNotFoundError(
+            f"Dataset tidak ditemukan!\n"
+            f"Pastikan path ini ada atau jalankan dari root folder: '{os.path.abspath(train_path)}'"
+        )
+
     df_train = pd.read_csv(train_path)
     df_test  = pd.read_csv(test_path)
     X_train = df_train.drop(columns=[TARGET_COL])
