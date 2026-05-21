@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/4748c90ddd9e471ca4eee2bbb8bfd5d5/artifacts
+end_time: 1779341120197
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4748c90ddd9e471ca4eee2bbb8bfd5d5
+run_name: incongruous-calf-538
+run_uuid: 4748c90ddd9e471ca4eee2bbb8bfd5d5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779341112321
+status: 3
+tags: []
+user_id: runner
