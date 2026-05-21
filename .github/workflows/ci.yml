@@ -6,7 +6,10 @@ on:
       - main
     paths:
       - 'MLProject/**'
-  workflow_dispatch:   # bisa trigger manual dari GitHub Actions tab
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   retrain:
@@ -32,7 +35,6 @@ jobs:
       # ── 4. Jalankan MLflow Project ──
       - name: Run MLflow Project
         run: |
-          cd Workflow-CI
           mlflow run MLProject \
             --env-manager=local \
             -P n_estimators=200 \
@@ -40,24 +42,24 @@ jobs:
             -P min_samples_split=2 \
             -P min_samples_leaf=1
 
-      # ── 5. Simpan artefak MLflow ke GitHub (upload ke repo) ──
+      # ── 5. Upload artefak ke GitHub Actions ──
       - name: Upload MLflow Artifacts to GitHub
         uses: actions/upload-artifact@v4
         with:
           name: mlflow-artifacts-${{ github.run_number }}
           path: |
-            Workflow-CI/mlruns/
-            Workflow-CI/MLProject/confusion_matrix.png
-            Workflow-CI/MLProject/feature_importance.png
-            Workflow-CI/MLProject/classification_report.txt
+            mlruns/
+            MLProject/confusion_matrix.png
+            MLProject/feature_importance.png
+            MLProject/classification_report.txt
           retention-days: 30
 
-      # ── 6. Commit mlruns ke repo agar tersimpan permanen ──
+      # ── 6. Commit mlruns ke repo ──
       - name: Commit MLflow runs to repository
         run: |
           git config --global user.name  "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Workflow-CI/mlruns/ || true
+          git add mlruns/ || true
           git diff --cached --quiet || git commit -m "ci: update mlruns artifacts [run #${{ github.run_number }}]"
           git push
         env:
