@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/42dbb26d2a574f4c8c7c44b654c74a1a/artifacts
+end_time: 1779435623840
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 42dbb26d2a574f4c8c7c44b654c74a1a
+run_name: carefree-slug-812
+run_uuid: 42dbb26d2a574f4c8c7c44b654c74a1a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779435613209
+status: 3
+tags: []
+user_id: runner
