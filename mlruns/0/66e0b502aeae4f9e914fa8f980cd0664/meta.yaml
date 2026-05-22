@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/66e0b502aeae4f9e914fa8f980cd0664/artifacts
+end_time: 1779433987189
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 66e0b502aeae4f9e914fa8f980cd0664
+run_name: legendary-shark-236
+run_uuid: 66e0b502aeae4f9e914fa8f980cd0664
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779433977756
+status: 3
+tags: []
+user_id: runner
