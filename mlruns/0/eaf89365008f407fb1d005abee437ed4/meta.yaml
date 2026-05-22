@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/eaf89365008f407fb1d005abee437ed4/artifacts
+end_time: 1779429244754
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: eaf89365008f407fb1d005abee437ed4
+run_name: thundering-chimp-413
+run_uuid: eaf89365008f407fb1d005abee437ed4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779429235875
+status: 3
+tags: []
+user_id: runner
