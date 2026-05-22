@@ -66,7 +66,7 @@ jobs:
           git pull --rebase origin main || true
           git add mlruns/ || true
           git diff --cached --quiet || git commit -m "ci: update mlruns artifacts [run #${{ github.run_number }}]"
-          git push
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -77,47 +77,19 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      # ── 8. Clean Docker Cache ──
       - name: Clean Docker Cache
         run: |
           docker system prune -a -f
-      # ── 8. Build & Push Docker Image via mlflow build-docker ──
+
+      # ── 9. Build & Push Docker Image via manual Dockerfile ──
       - name: Build and Push Docker Image
         run: |
-          # MLflow menyimpan di experiment 0 (default), cari run terbaru
-          EXPERIMENT_ID=0
-          echo "Using default experiment: ${EXPERIMENT_ID}"
-          
-          # Cari folder run terbaru (folder dengan UUID)
-          RUN_ID=$(ls -t mlruns/${EXPERIMENT_ID}/ | grep -v 'meta' | head -1)
-          
-          if [ -z "$RUN_ID" ]; then
-            echo "❌ Error: No run found in experiment ${EXPERIMENT_ID}"
-            ls -la mlruns/${EXPERIMENT_ID}/
-            exit 1
-          fi
-          
-          echo "✅ Latest Run ID: ${RUN_ID}"
-          
-          MODEL_PATH="mlruns/${EXPERIMENT_ID}/${RUN_ID}/artifacts/model"
-          echo "✅ Model path: ${MODEL_PATH}"
-          
-          # Verify model exists
-          if [ ! -d "$MODEL_PATH" ]; then
-            echo "❌ Error: Model not found at ${MODEL_PATH}"
-            echo "Available artifacts:"
-            ls -la mlruns/${EXPERIMENT_ID}/${RUN_ID}/artifacts/ || true
-            exit 1
-          fi
-          
           IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/social-media-mental-health:latest"
           
-          # Build docker image
-          echo "Building Docker image..."
-          mlflow models build-docker \
-            -m "${MODEL_PATH}" \
-            -n "${IMAGE_NAME}"
+          echo "Building Docker image from Dockerfile..."
+          docker build -t "${IMAGE_NAME}" .
           
-          # Push to Docker Hub
           echo "Pushing to Docker Hub..."
           docker push "${IMAGE_NAME}"
           echo "✅ Image pushed: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/social-media-mental-health"
