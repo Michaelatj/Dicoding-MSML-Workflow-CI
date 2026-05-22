@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/f9f539f2bd8b498fbbdbe5a153ffc95a/artifacts
+end_time: 1779423684148
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f9f539f2bd8b498fbbdbe5a153ffc95a
+run_name: sincere-elk-552
+run_uuid: f9f539f2bd8b498fbbdbe5a153ffc95a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779423675210
+status: 3
+tags: []
+user_id: runner
