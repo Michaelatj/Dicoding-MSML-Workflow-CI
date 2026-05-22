@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/47294c04073d47c683bdaf8db1836284/artifacts
+end_time: 1779433455447
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 47294c04073d47c683bdaf8db1836284
+run_name: gentle-zebra-675
+run_uuid: 47294c04073d47c683bdaf8db1836284
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779433445627
+status: 3
+tags: []
+user_id: runner
