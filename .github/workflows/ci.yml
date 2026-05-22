@@ -61,6 +61,9 @@ jobs:
         run: |
           git config --global user.name  "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Pull latest changes dari remote
+          git pull --rebase origin main || true
           git add mlruns/ || true
           git diff --cached --quiet || git commit -m "ci: update mlruns artifacts [run #${{ github.run_number }}]"
           git push
