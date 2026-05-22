@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/53513ba5f8914c288d3e120db8a767e5/artifacts
+end_time: 1779432139984
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 53513ba5f8914c288d3e120db8a767e5
+run_name: thoughtful-gull-892
+run_uuid: 53513ba5f8914c288d3e120db8a767e5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779432128848
+status: 3
+tags: []
+user_id: runner
