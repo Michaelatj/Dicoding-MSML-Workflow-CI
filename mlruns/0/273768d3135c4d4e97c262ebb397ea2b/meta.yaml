@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/273768d3135c4d4e97c262ebb397ea2b/artifacts
+end_time: 1779432949346
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 273768d3135c4d4e97c262ebb397ea2b
+run_name: angry-turtle-988
+run_uuid: 273768d3135c4d4e97c262ebb397ea2b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779432938456
+status: 3
+tags: []
+user_id: runner
