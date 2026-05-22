@@ -21,8 +21,8 @@ from sklearn.metrics import (
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_path",        type=str, default="social_media_mental_health_preprocessing/train.csv")
-    parser.add_argument("--test_path",         type=str, default="social_media_mental_health_preprocessing/test.csv")
+    parser.add_argument("--train_path",        type=str, default="MLProject/social_media_mental_health_preprocessing/train.csv")
+    parser.add_argument("--test_path",         type=str, default="MLProject/social_media_mental_health_preprocessing/test.csv")
     parser.add_argument("--n_estimators",      type=int, default=100)
     parser.add_argument("--max_depth",         type=str, default="None")
     parser.add_argument("--min_samples_split", type=int, default=2)
