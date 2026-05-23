@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/ad918148ba8e432d8fa505f54a4af6f0/artifacts
+end_time: 1779532114419
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ad918148ba8e432d8fa505f54a4af6f0
+run_name: adventurous-ox-604
+run_uuid: ad918148ba8e432d8fa505f54a4af6f0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779532105652
+status: 3
+tags: []
+user_id: runner
