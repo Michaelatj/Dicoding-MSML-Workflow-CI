@@ -92,4 +92,4 @@ jobs:
           
           echo "Pushing to Docker Hub..."
           docker push "${IMAGE_NAME}"
-          echo "✅ Image pushed: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/social-media-mental-health"
+          echo "Image pushed: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/social-media-mental-health"
