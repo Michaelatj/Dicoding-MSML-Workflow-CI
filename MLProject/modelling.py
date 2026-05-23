@@ -1,10 +1,3 @@
-"""
-modelling.py (MLflow Project version)
----------------------------------------
-Kriteria 3 - Workflow CI
-Dijalankan via: mlflow run MLProject --env-manager=local
-"""
-
 import os
 import argparse
 import pandas as pd
@@ -69,10 +62,6 @@ def main():
     max_depth = None if args.max_depth == "None" else int(args.max_depth)
 
     X_train, X_test, y_train, y_test = load_data(args.train_path, args.test_path)
-
-    # ── KUNCI FIX: pakai active run dari MLflow Project, JANGAN buat run baru ──
-    # Hapus mlflow.set_experiment() dan with mlflow.start_run()
-    # MLflow Project sudah otomatis membuat run sebelum script dijalankan
 
     # Log parameter ke active run
     mlflow.log_param("n_estimators",      args.n_estimators)
