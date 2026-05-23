@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Dicoding-MSML-Workflow-CI/Dicoding-MSML-Workflow-CI/mlruns/0/86bb94ffb64b4720a341ce84138f8d2a/artifacts
+end_time: 1779534038205
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 86bb94ffb64b4720a341ce84138f8d2a
+run_name: auspicious-snail-249
+run_uuid: 86bb94ffb64b4720a341ce84138f8d2a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779534029371
+status: 3
+tags: []
+user_id: runner
